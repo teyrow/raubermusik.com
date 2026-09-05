@@ -6,7 +6,7 @@ description: >-
   Reparationer av stråkinstrument i Motala – stråktagling, inpassning av nya
   stall, limning av sprickor och lagningar. Även försäkringsskador.
 bild: reparationer
-bild_alt: Fiol under arbete i violinateljén
+bild_alt: Hans-Peter Rauber vid arbetsbänken, med tagelknippen hängande från taket
 ---
 
 Jag utför de flesta vanligt förekommande reparationerna på stråkinstrument, till exempel:

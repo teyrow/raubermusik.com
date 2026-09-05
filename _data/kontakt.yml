@@ -1,18 +1,29 @@
 # Kontaktuppgifterna på ett ställe – de används i sidfoten på varje sida,
 # på kontaktsidan och i strukturerad data (JSON-LD).
 namn: Rauber musik
-telefon: "+46 70-556 8765"
+telefon: "070-556 87 65"
 telefon_lank: "+46705568765"
 epost: raubermusik@telia.com
-gata: Nygatan 20
+gata: Nygatan 20 A
 postnummer: "591 45"
 ort: Motala
 land: Sverige
-karta: https://www.google.com/maps/search/?api=1&query=Rauber+musik%2C+Nygatan+20%2C+591+45+Motala
+karta: https://www.google.com/maps/search/?api=1&query=Rauber+musik%2C+Nygatan+20+A%2C+591+45+Motala
 karta_embed: https://maps.google.com/maps?q=58.5341018,15.0610463&hl=sv&z=15&output=embed
 latitud: 58.5341018
 longitud: 15.0610463
+# Sociala kanaler. Ordningen här är ordningen de visas i sidfoten.
+sociala:
+  - namn: Instagram
+    url: https://www.instagram.com/raubermusik/
+    ikon: instagram
+  - namn: Facebook
+    url: https://www.facebook.com/profile.php?id=100063532780139
+    ikon: facebook
+
+# Kvar som egen nyckel eftersom kontaktsidan hänvisar dit för ändrade öppettider.
 facebook: https://www.facebook.com/profile.php?id=100063532780139
+instagram: https://www.instagram.com/raubermusik/
 oppettider:
   - dagar: Måndag – fredag
     tid: "09:00 – 17:00"

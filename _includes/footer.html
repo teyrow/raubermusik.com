@@ -6,6 +6,17 @@
     <div class="sidfot__block">
       <img class="sidfot__logo" src="{{ '/assets/img/logo-white.svg' | relative_url }}" width="160" height="62" alt="Rauber musik">
       <p class="sidfot__ingress">Violinateljé i Motala. Reparationer, försäljning och nytillverkning av stråkar.</p>
+
+      <ul class="sociala obullad">
+        {%- for kanal in k.sociala %}
+        <li>
+          <a href="{{ kanal.url }}" rel="me noopener">
+            {%- include social-ikon.html namn=kanal.ikon -%}
+            <span>{{ kanal.namn }}</span>
+          </a>
+        </li>
+        {%- endfor %}
+      </ul>
     </div>
 
     <div class="sidfot__block">
@@ -13,7 +24,6 @@
       <ul class="obullad">
         <li><a href="tel:{{ k.telefon_lank }}">{{ k.telefon }}</a></li>
         <li><a href="mailto:{{ k.epost }}">{{ k.epost }}</a></li>
-        <li><a href="{{ k.facebook }}" rel="noopener">Facebook</a></li>
       </ul>
     </div>
 

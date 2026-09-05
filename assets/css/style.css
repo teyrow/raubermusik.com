@@ -700,3 +700,21 @@ img { height: auto; display: block; }
   h1, h2, h3 { break-after: avoid; }
   .fraga { break-inside: avoid; }
 }
+
+/* --- Sociala kanaler ----------------------------------------------------- */
+
+.sociala {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.1rem;
+  margin-top: 1.1rem;
+}
+.sociala a {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  text-decoration: none;
+  padding-block: .2rem;
+}
+.sociala a:hover span { text-decoration: underline; text-underline-offset: .18em; }
+.sociala svg { flex: none; }

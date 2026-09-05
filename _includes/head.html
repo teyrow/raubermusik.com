@@ -60,6 +60,10 @@
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     "opens": "09:00", "closes": "17:00"
   }],
-  "sameAs": [{{ k.facebook | jsonify }}]
+  "sameAs": [
+    {%- for kanal in k.sociala %}
+    {{ kanal.url | jsonify }}{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
 }
 </script>
