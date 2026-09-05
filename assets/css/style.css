@@ -8,7 +8,9 @@
 
 @font-face {
   font-family: "Playfair Display";
-  src: url("/assets/fonts/playfair-display-latin.woff2") format("woff2");
+  /* Relativ sökväg – en absolut skulle ignorera site.baseurl och slå fel
+     när sajten ligger i en underkatalog. */
+  src: url("../fonts/playfair-display-latin.woff2") format("woff2");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
