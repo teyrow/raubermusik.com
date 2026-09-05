@@ -9,6 +9,11 @@ atelje:
   bredder: [600,900,1200]
   bredd: 1785
   hojd: 1785
+verkstaden:
+  fil: verkstaden
+  bredder: [600,900,1400]
+  bredd: 1960
+  hojd: 1102
 reparationer:
   fil: reparationer
   bredder: [600,900,1200]

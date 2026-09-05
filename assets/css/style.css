@@ -718,3 +718,5 @@ img { height: auto; display: block; }
 }
 .sociala a:hover span { text-decoration: underline; text-underline-offset: .18em; }
 .sociala svg { flex: none; }
+
+.kontakt__notis img { border-radius: var(--radie); }

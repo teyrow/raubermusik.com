@@ -66,6 +66,9 @@ mkdir -p _data
 printf '# Genererad av tools/optimize-images.sh – redigera inte för hand.\n' > "$MANIFEST"
 render "$SRC/hero.jpg"         hero          1200 2000
 render "$SRC/atelje.jpg"       atelje         600 900 1200
+# Originalet är redan en komprimerad webp, så kvaliteten hålls högre här för
+# att begränsa generationsförlusten vid omkodningen.
+render --kvalitet 88,84 "$SRC/verkstaden.webp" verkstaden 600 900 1400
 render --kvalitet 72,64 "$SRC/reparationer.jpg" reparationer   600 900 1200
 render "$SRC/butiken.jpg"      butiken        600 900 1200
 render --kvalitet 72,64 "$SRC/fragor.jpg"       fragor         600 900 1200
