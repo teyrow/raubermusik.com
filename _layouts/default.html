@@ -14,5 +14,8 @@
   {%- if page.url == "/kontakt/" %}
   <script src="{{ '/assets/js/karta.js' | relative_url }}" defer></script>
   {%- endif %}
+  {%- if page.galleri %}
+  <script src="{{ '/assets/js/bildvisare.js' | relative_url }}" defer></script>
+  {%- endif %}
 </body>
 </html>

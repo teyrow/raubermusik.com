@@ -10,6 +10,9 @@
 <title>{{ sidtitel }}</title>
 <meta name="description" content="{{ beskrivning | escape }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
+{%- if site.forhandsvisning %}
+<meta name="robots" content="noindex, nofollow">
+{%- endif %}
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sv_SE">

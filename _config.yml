@@ -3,7 +3,23 @@ tagline: Violinateljé i Motala
 description: >-
   Violinateljé i Motala. Reparationer och försäljning av stråkinstrument
   och tillbehör, samt nytillverkning av stråkar.
-url: https://raubermusik.com
+# ---------------------------------------------------------------------------
+# TILLFÄLLIGT LÄGE: sajten ligger på github.io i väntan på DNS-omställningen.
+#
+# När DNS pekar på GitHub, gör dessa fyra saker och pusha:
+#   1. url:            https://raubermusik.com
+#   2. baseurl:        "" (tom sträng)
+#   3. forhandsvisning: false
+#   4. echo raubermusik.com > CNAME
+# ---------------------------------------------------------------------------
+url: https://teyrow.github.io
+baseurl: /raubermusik.com
+
+# Håller förhandsvisningen borta ur sökmotorerna. Den riktiga sajten ligger
+# fortfarande kvar hos one.com, och två kopior av samma innehåll i indexet
+# gör bara skada.
+forhandsvisning: true
+
 lang: sv-SE
 
 permalink: pretty

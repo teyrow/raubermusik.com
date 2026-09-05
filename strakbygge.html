@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Stråkbygge
+galleri: true
 description: >-
   Nytillverkning av stråkar i Motala. Hans-Peter Rauber har byggt stråkar sedan
   2021 och avlade examen för stråkmakaren Ulf Johansson 2024.
@@ -39,9 +40,15 @@ description: >-
         {%- assign text = "Violinstråke 2024 med pajeotöga" -%}
       {%- endif -%}
       {%- assign nyckel = nr | prepend: "strakar_strake-" -%}
+      {%- assign b = site.data.bilder[nyckel] -%}
+      {%- assign stor = b.fil | prepend: '/assets/img/' | append: '-' | append: b.bredder.last | append: '.jpg' -%}
       <li>
         <figure>
-          {% include bild.html id=nyckel alt=text sizes="(min-width: 62rem) 20rem, (min-width: 40rem) 45vw, 92vw" %}
+          <a class="galleri__lank" href="{{ stor | relative_url }}"
+             data-galleri data-bildtext="{{ text }}"
+             aria-label="Visa större: {{ text }}">
+            {% include bild.html id=nyckel alt=text sizes="(min-width: 62rem) 20rem, (min-width: 40rem) 45vw, 92vw" %}
+          </a>
           <figcaption>{{ text }}</figcaption>
         </figure>
       </li>

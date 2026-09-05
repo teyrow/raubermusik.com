@@ -1,4 +1,14 @@
+---
+permalink: /robots.txt
+sitemap: false
+---
+{%- if site.forhandsvisning -%}
+# Förhandsvisning på github.io – ska inte indexeras.
+User-agent: *
+Disallow: /
+{%- else -%}
 User-agent: *
 Allow: /
 
-Sitemap: https://raubermusik.com/sitemap.xml
+Sitemap: {{ '/sitemap.xml' | absolute_url }}
+{%- endif -%}

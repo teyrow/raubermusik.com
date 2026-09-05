@@ -55,11 +55,48 @@ layouten, så att webbläsaren hämtar rätt storlek.
 För att lägga till en helt ny bild: lägg originalet i `_originals/`, lägg till
 en `render`-rad i `tools/optimize-images.sh` och kör skriptet.
 
+## Bildvisare
+
+Stråkbygge-sidan har en bildvisare. Den slås på med `galleri: true` i sidans
+front matter, och varje bild ligger i en länk till fullstorleksbilden:
+
+```liquid
+<a class="galleri__lank" href="{{ stor | relative_url }}" data-galleri data-bildtext="{{ text }}">
+  {% include bild.html id=nyckel alt=text sizes="…" %}
+</a>
+```
+
+Utan JavaScript öppnas bilden som en vanlig länk. Med JavaScript fångas klicket
+och bilden visas i en `<dialog>` med pilar, bildtext, räknare, piltangenter och
+Esc. Samma mönster fungerar på vilken sida som helst – sätt `galleri: true` och
+märk länkarna med `data-galleri`.
+
 ## Publicering
 
 Sajten är gjord för GitHub Pages klassiska Jekyll-bygge – du pushar, GitHub
 bygger. Båda plugin-modulerna (`jekyll-sitemap`, `jekyll-redirect-from`) finns
 på GitHub Pages tillåtna lista.
+
+### Just nu: förhandsvisning på github.io
+
+I väntan på DNS-omställningen ligger sajten på
+<https://teyrow.github.io/raubermusik.com/>. Den är satt till `noindex` och
+`Disallow: /` i robots.txt, eftersom den riktiga sajten fortfarande ligger kvar
+hos one.com och två kopior i sökindexet bara skadar.
+
+**Så byter du till skarp domän** när DNS pekar på GitHub – tre rader i
+`_config.yml` plus en fil:
+
+```bash
+# _config.yml:  url: https://raubermusik.com
+#               baseurl: ""
+#               forhandsvisning: false
+echo raubermusik.com > CNAME
+git commit -am "Byt till raubermusik.com" && git push
+```
+
+Sätt sedan Custom domain till `raubermusik.com` under Settings → Pages och
+kryssa i Enforce HTTPS när certifikatet har utfärdats.
 
 1. Skapa ett repo på GitHub och pusha.
 2. Settings → Pages → Source: **Deploy from a branch**, branch `main`, mapp `/`.
