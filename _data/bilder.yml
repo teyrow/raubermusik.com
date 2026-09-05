@@ -1,0 +1,66 @@
+# Genererad av tools/optimize-images.sh – redigera inte för hand.
+hero:
+  fil: hero
+  bredder: [1200,2000]
+  bredd: 4142
+  hojd: 2330
+atelje:
+  fil: atelje
+  bredder: [600,900,1200]
+  bredd: 1785
+  hojd: 1785
+reparationer:
+  fil: reparationer
+  bredder: [600,900,1200]
+  bredd: 2677
+  hojd: 4016
+butiken:
+  fil: butiken
+  bredder: [600,900,1200]
+  bredd: 2848
+  hojd: 4288
+fragor:
+  fil: fragor
+  bredder: [600,900,1200]
+  bredd: 1964
+  hojd: 3800
+kontakt:
+  fil: kontakt
+  bredder: [600,900,1200]
+  bredd: 1400
+  hojd: 866
+strakbygge:
+  fil: strakbygge
+  bredder: [600]
+  bredd: 827
+  hojd: 540
+strakar_strake-1:
+  fil: strakar/strake-1
+  bredder: [600,1000]
+  bredd: 1086
+  hojd: 724
+strakar_strake-2:
+  fil: strakar/strake-2
+  bredder: [600,1000]
+  bredd: 1416
+  hojd: 555
+strakar_strake-3:
+  fil: strakar/strake-3
+  bredder: [600,1000]
+  bredd: 1189
+  hojd: 543
+strakar_strake-4:
+  fil: strakar/strake-4
+  bredder: [600,1000]
+  bredd: 1204
+  hojd: 653
+strakar_strake-5:
+  fil: strakar/strake-5
+  bredder: [600,1000]
+  bredd: 1149
+  hojd: 683
+strakar_strake-6:
+  fil: strakar/strake-6
+  bredder: [600,1000]
+  bredd: 1270
+  hojd: 618

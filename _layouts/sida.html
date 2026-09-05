@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<div class="sidtopp">
+  <div class="omslag">
+    <h1>{{ page.title }}</h1>
+    {%- if page.ingress %}
+    <p class="ingress">{{ page.ingress }}</p>
+    {%- endif %}
+  </div>
+</div>
+
+<div class="omslag sidkropp{% if page.bild %} sidkropp--med-bild{% endif %}">
+  <div class="sidkropp__text prosa">
+    {{ content }}
+  </div>
+  {%- if page.bild %}
+  <div class="sidkropp__bild">
+    {% include bild.html id=page.bild alt=page.bild_alt sizes="(min-width: 60rem) 26rem, 92vw" %}
+  </div>
+  {%- endif %}
+</div>

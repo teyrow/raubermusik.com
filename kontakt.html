@@ -1,0 +1,69 @@
+---
+layout: default
+title: Kontakt
+description: >-
+  Rauber musik, Nygatan 20 i Motala. Öppettider, telefon, e-post och vägbeskrivning.
+---
+
+{%- assign k = site.data.kontakt %}
+
+<div class="sidtopp">
+  <div class="omslag">
+    <h1>Kontakt</h1>
+    <p class="ingress">Hör gärna av er innan ni kommer, så att någon kan hjälpa er.</p>
+  </div>
+</div>
+
+<div class="omslag sidkropp">
+
+  <div class="kontaktrutor">
+    <div class="kontaktruta">
+      <h2>Telefon</h2>
+      <p><a href="tel:{{ k.telefon_lank }}">{{ k.telefon }}</a></p>
+    </div>
+
+    <div class="kontaktruta">
+      <h2>E-post</h2>
+      <p><a href="mailto:{{ k.epost }}">{{ k.epost }}</a></p>
+    </div>
+
+    <div class="kontaktruta">
+      <h2>Adress</h2>
+      <address>
+        {{ k.namn }}<br>
+        {{ k.gata }}<br>
+        {{ k.postnummer }} {{ k.ort }}
+      </address>
+    </div>
+
+    <div class="kontaktruta">
+      <h2>Öppettider</h2>
+      <dl class="oppettider">
+        {%- for rad in k.oppettider %}
+        <dt>{{ rad.dagar }}</dt>
+        <dd>{{ rad.tid }}</dd>
+        {%- endfor %}
+      </dl>
+    </div>
+  </div>
+
+  <div class="prosa prosa--smal kontakt__notis">
+    <p>
+      Tillfälligt ändrade öppettider hittar du på
+      <a href="{{ k.facebook }}" rel="noopener">Facebook</a>.
+    </p>
+  </div>
+
+  <h2>Hitta hit</h2>
+  <div class="karta" data-src="{{ k.karta_embed }}">
+    <div class="karta__platshallare">
+      <p>
+        Kartan kommer från Google och laddas först när du klickar – då sätter
+        Google cookies i din webbläsare.
+      </p>
+      <button class="knapp" type="button" data-ladda-karta>Visa karta</button>
+      <p><a href="{{ k.karta }}" rel="noopener">Öppna i Google Maps i stället</a></p>
+    </div>
+  </div>
+
+</div>

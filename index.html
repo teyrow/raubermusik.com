@@ -1,0 +1,80 @@
+---
+layout: default
+title: Hem
+description: >-
+  Violinateljé i Motala. Reparationer och försäljning av stråkinstrument och
+  tillbehör, samt nytillverkning av stråkar. Hans-Peter Rauber, Nygatan 20.
+redirect_from:
+  - /om/
+---
+
+<section class="hjalte">
+  {% include bild.html id="hero" alt="" sizes="100vw" ivrig=true %}
+  <div class="hjalte__innehall">
+    <img class="hjalte__logo" src="{{ '/assets/img/logo-white.svg' | relative_url }}" width="550" height="212" alt="Rauber musik">
+    <p class="hjalte__ord">
+      Reparationer och försäljning av stråkinstrument och tillbehör.<br>
+      Nytillverkning av stråkar.
+    </p>
+  </div>
+</section>
+
+<section class="sektion">
+  <div class="omslag duo">
+    <div class="duo__text">
+      <h1>Ett bra instrument höjer musikglädjen</h1>
+      <p>
+        Vissa gånger räcker det med en justering för att få ett instrument att
+        låta bra igen. Andra gånger kan det krävas en reparation. I min
+        violinateljé utför jag både små och stora reparationer.
+      </p>
+      <p>Det finns även nyare och äldre stråkinstrument att köpa.</p>
+    </div>
+    <div>
+      {% include bild.html id="atelje" alt="Arbetsbänk i violinateljén med verktyg och instrument" sizes="(min-width: 55rem) 22rem, 92vw" %}
+    </div>
+  </div>
+</section>
+
+<section class="sektion sektion--varm">
+  <div class="omslag">
+    <h2>Vad jag gör</h2>
+    <p class="ingress">Verkstad, butik och stråkmakeri under samma tak på Nygatan i Motala.</p>
+
+    <div class="kort-rutnat">
+      <a class="kort" href="{{ '/reparationer/' | relative_url }}">
+        {% include bild.html id="reparationer" alt="" sizes="(min-width: 70rem) 22rem, (min-width: 34rem) 45vw, 92vw" %}
+        <div class="kort__kropp">
+          <h3>Reparationer</h3>
+          <p>Stråktagling, nya stall, limning av sprickor och lagningar – även försäkringsskador.</p>
+        </div>
+      </a>
+
+      <a class="kort" href="{{ '/i_butiken/' | relative_url }}">
+        {% include bild.html id="butiken" alt="" sizes="(min-width: 70rem) 22rem, (min-width: 34rem) 45vw, 92vw" %}
+        <div class="kort__kropp">
+          <h3>I butiken</h3>
+          <p>Fioler, altfioler, celli, stråkar och tillbehör – alla instrument justerade innan de säljs.</p>
+        </div>
+      </a>
+
+      <a class="kort" href="{{ '/strakbygge/' | relative_url }}">
+        {% include bild.html id="strakbygge" alt="" sizes="(min-width: 70rem) 22rem, (min-width: 34rem) 45vw, 92vw" %}
+        <div class="kort__kropp">
+          <h3>Stråkbygge</h3>
+          <p>Nytillverkning av stråkar i fernambuk, med examen för stråkmakaren Ulf Johansson.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sektion sektion--morker">
+  <div class="omslag">
+    <h2>Välkommen in</h2>
+    <p class="ingress">Hör gärna av er innan ni kommer, så att någon kan hjälpa er.</p>
+    <p class="efterslag">
+      <a class="knapp" href="{{ '/kontakt/' | relative_url }}">Kontakt och öppettider</a>
+    </p>
+  </div>
+</section>

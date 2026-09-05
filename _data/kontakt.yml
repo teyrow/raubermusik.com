@@ -1,0 +1,20 @@
+# Kontaktuppgifterna på ett ställe – de används i sidfoten på varje sida,
+# på kontaktsidan och i strukturerad data (JSON-LD).
+namn: Rauber musik
+telefon: "+46 70-556 8765"
+telefon_lank: "+46705568765"
+epost: raubermusik@telia.com
+gata: Nygatan 20
+postnummer: "591 45"
+ort: Motala
+land: Sverige
+karta: https://www.google.com/maps/search/?api=1&query=Rauber+musik%2C+Nygatan+20%2C+591+45+Motala
+karta_embed: https://maps.google.com/maps?q=58.5341018,15.0610463&hl=sv&z=15&output=embed
+latitud: 58.5341018
+longitud: 15.0610463
+facebook: https://www.facebook.com/profile.php?id=100063532780139
+oppettider:
+  - dagar: Måndag – fredag
+    tid: "09:00 – 17:00"
+  - dagar: Lördag – söndag
+    tid: Stängt

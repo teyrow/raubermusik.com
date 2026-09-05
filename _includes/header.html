@@ -1,0 +1,25 @@
+<a class="hoppa" href="#innehall">Hoppa till innehållet</a>
+<header class="sidhuvud">
+  <div class="omslag sidhuvud__rad">
+    <a class="sidhuvud__logo" href="{{ '/' | relative_url }}">
+      <img src="{{ '/assets/img/logo.svg' | relative_url }}" width="135" height="52" alt="Rauber musik">
+    </a>
+
+    <button class="meny-knapp" type="button" aria-expanded="false" aria-controls="huvudmeny">
+      <span class="meny-knapp__streck" aria-hidden="true"></span>
+      <span class="meny-knapp__text">Meny</span>
+    </button>
+
+    <nav id="huvudmeny" class="meny" aria-label="Huvudmeny">
+      <ul>
+        {%- for post in site.data.nav %}
+        {%- assign aktiv = false -%}
+        {%- if page.url == post.url %}{% assign aktiv = true %}{% endif -%}
+        <li>
+          <a href="{{ post.url | relative_url }}"{% if aktiv %} aria-current="page"{% endif %}>{{ post.titel }}</a>
+        </li>
+        {%- endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

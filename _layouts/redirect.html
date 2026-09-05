@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <title>Sidan har flyttat</title>
+  <link rel="canonical" href="{{ page.redirect.to }}">
+  <meta http-equiv="refresh" content="0; url={{ page.redirect.to }}">
+  <meta name="robots" content="noindex">
+  <script>location.replace({{ page.redirect.to | jsonify }});</script>
+</head>
+<body>
+  <p>Sidan har flyttat. <a href="{{ page.redirect.to }}">Klicka här om du inte skickas vidare automatiskt.</a></p>
+</body>
+</html>

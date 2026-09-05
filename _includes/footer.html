@@ -1,0 +1,43 @@
+{%- assign k = site.data.kontakt -%}
+<footer class="sidfot">
+  <div class="omslag sidfot__rutnat">
+
+    <div class="sidfot__block">
+      <img class="sidfot__logo" src="{{ '/assets/img/logo-white.svg' | relative_url }}" width="160" height="62" alt="Rauber musik">
+      <p class="sidfot__ingress">Violinateljé i Motala. Reparationer, försäljning och nytillverkning av stråkar.</p>
+    </div>
+
+    <div class="sidfot__block">
+      <h2>Kontakt</h2>
+      <ul class="obullad">
+        <li><a href="tel:{{ k.telefon_lank }}">{{ k.telefon }}</a></li>
+        <li><a href="mailto:{{ k.epost }}">{{ k.epost }}</a></li>
+        <li><a href="{{ k.facebook }}" rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+
+    <div class="sidfot__block">
+      <h2>Adress</h2>
+      <address>
+        {{ k.namn }}<br>
+        {{ k.gata }}<br>
+        {{ k.postnummer }} {{ k.ort }}
+      </address>
+      <p><a href="{{ k.karta }}" rel="noopener">Visa på karta</a></p>
+    </div>
+
+    <div class="sidfot__block">
+      <h2>Öppettider</h2>
+      <dl class="oppettider">
+        {%- for rad in k.oppettider %}
+        <dt>{{ rad.dagar }}</dt>
+        <dd>{{ rad.tid }}</dd>
+        {%- endfor %}
+      </dl>
+    </div>
+
+  </div>
+  <div class="omslag sidfot__botten">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ k.namn }}</p>
+  </div>
+</footer>

@@ -1,0 +1,51 @@
+---
+layout: default
+title: Stråkbygge
+description: >-
+  Nytillverkning av stråkar i Motala. Hans-Peter Rauber har byggt stråkar sedan
+  2021 och avlade examen för stråkmakaren Ulf Johansson 2024.
+---
+
+<div class="sidtopp">
+  <div class="omslag">
+    <h1>Stråkbygge</h1>
+    <p class="ingress">Nybyggnation av stråkar i fernambuk, älghorn och guld.</p>
+  </div>
+</div>
+
+<div class="omslag sidkropp sidkropp--med-bild">
+  <div class="sidkropp__text prosa">
+    <h2>Nybyggnation av stråkar</h2>
+    <p>
+      Hans-Peter Rauber har tillverkat stråkar sedan 2021. Han har som lärling
+      studerat stråkbygge för den världskände stråkmakaren Ulf Johansson i
+      Harlösa, och har 2024 avlagt examen.
+    </p>
+  </div>
+  <div class="sidkropp__bild">
+    {% include bild.html id="strakbygge" alt="Stråke under tillverkning" sizes="(min-width: 60rem) 26rem, 92vw" %}
+  </div>
+</div>
+
+<section class="sektion sektion--varm">
+  <div class="omslag">
+    <h2>Egna stråkar</h2>
+
+    <ul class="galleri">
+      {%- for nr in (1..6) -%}
+      {%- if nr <= 3 -%}
+        {%- assign text = "Examensstråke 2024 – fernambuk, älghorn och guld" -%}
+      {%- else -%}
+        {%- assign text = "Violinstråke 2024 med pajeotöga" -%}
+      {%- endif -%}
+      {%- assign nyckel = nr | prepend: "strakar_strake-" -%}
+      <li>
+        <figure>
+          {% include bild.html id=nyckel alt=text sizes="(min-width: 62rem) 20rem, (min-width: 40rem) 45vw, 92vw" %}
+          <figcaption>{{ text }}</figcaption>
+        </figure>
+      </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+layout: default
+title: Sidan finns inte
+description: Sidan du sökte finns inte på raubermusik.com.
+sitemap: false
+permalink: /404.html
+---
+
+<div class="sidtopp">
+  <div class="omslag">
+    <h1>Sidan finns inte</h1>
+    <p class="ingress">Länken kan vara gammal, eller så har sidan bytt adress.</p>
+  </div>
+</div>
+
+<div class="omslag sidkropp">
+  <div class="prosa">
+    <p>Prova någon av dessa i stället:</p>
+    <ul>
+      {%- for post in site.data.nav %}
+      <li><a href="{{ post.url | relative_url }}">{{ post.titel }}</a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</div>

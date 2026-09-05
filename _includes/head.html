@@ -1,0 +1,59 @@
+{%- assign titel = page.title | default: site.title -%}
+{%- if page.url == "/" -%}
+  {%- assign sidtitel = site.title | append: " – " | append: site.tagline -%}
+{%- else -%}
+  {%- assign sidtitel = titel | append: " – " | append: site.title -%}
+{%- endif -%}
+{%- assign beskrivning = page.description | default: site.description | strip_newlines | strip -%}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ sidtitel }}</title>
+<meta name="description" content="{{ beskrivning | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sv_SE">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ sidtitel | escape }}">
+<meta property="og:description" content="{{ beskrivning | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ '/assets/img/hero-1200.jpg' | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="{{ '/assets/img/favicon-32.png' | relative_url }}" sizes="32x32">
+<link rel="icon" href="{{ '/assets/img/icon-512.png' | relative_url }}" sizes="512x512">
+<link rel="apple-touch-icon" href="{{ '/assets/img/icon-180.png' | relative_url }}">
+
+<link rel="preload" href="{{ '/assets/fonts/playfair-display-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+{%- if page.url == "/kontakt/" %}
+<link rel="preconnect" href="https://maps.google.com">
+{%- endif %}
+
+{%- assign k = site.data.kontakt %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicStore",
+  "name": {{ k.namn | jsonify }},
+  "description": {{ site.description | strip_newlines | strip | jsonify }},
+  "url": {{ site.url | jsonify }},
+  "image": {{ '/assets/img/hero-1200.jpg' | absolute_url | jsonify }},
+  "telephone": {{ k.telefon_lank | jsonify }},
+  "email": {{ k.epost | jsonify }},
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ k.gata | jsonify }},
+    "postalCode": {{ k.postnummer | jsonify }},
+    "addressLocality": {{ k.ort | jsonify }},
+    "addressCountry": "SE"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": {{ k.latitud }}, "longitude": {{ k.longitud }} },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00", "closes": "17:00"
+  }],
+  "sameAs": [{{ k.facebook | jsonify }}]
+}
+</script>

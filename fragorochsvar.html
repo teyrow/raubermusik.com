@@ -1,0 +1,74 @@
+---
+layout: default
+title: Frågor & svar
+description: >-
+  Vanliga frågor om fiolreparationer, priser, kinesiska fioler och valet mellan
+  kolfiber- och trästråke – besvarade av Rauber musik i Motala.
+fragor:
+  - fraga: Vad kostar en reparation?
+    svar: >-
+      Kunden får alltid ett fast pris efter att jag tittat på instrumentet och
+      bedömt vad som krävs!
+  - fraga: Vi har en gammal fiol hemma, går den att laga?
+    svar: >-
+      En bra fiol lönar sig alltid att laga, en dålig fiol lönar sig aldrig att
+      laga. Jag hjälper dig att bedöma om en lagning är motiverad!
+  - fraga: Kan man köpa en kinesisk fiol?
+    svar: >-
+      Absolut! De senaste tio åren har den kinesiska fiolbyggarkunskapen nått
+      internationell kvalitet, med hjälp av instrumentmakare från Tyskland,
+      Italien och Frankrike. Det innebär inte att alla kinafioler är bra, men
+      att det finns bra instrument från Kina.
+  - fraga: Kolfiber- eller trästråke?
+    svar: >-
+      De allra bästa stråkarna görs av trä, men i de billiga trästråkarna är
+      träkvaliteten för dålig. De kan tappa spänsten och bli krokiga efter en
+      kort tid. Därför rekommenderar jag kolfiber i de lägsta prisklasserna!
+      Efter att noga ha provat ett antal kolfiberstråkar har jag valt ut och
+      saluför de märken jag anser vara bäst!
+  - fraga: Varför är dina instrument dyrare än i nätbutiken?
+    svar: >-
+      Mina instrument är justerade! Nytt stall, nya kvalitetssträngar, och jag
+      hjälper dig att välja hakstöd och inställningar som passar just dig. Detta
+      får du inte från en nätbutik, utan är tvungen att bekosta själv. Jag
+      hjälper givetvis till med efterjusteringar och ser till att du blir nöjd
+      med ditt instrument! Som fiollärare och violinist provar jag alla
+      instrument noga och skulle aldrig sälja ett undermåligt instrument.
+---
+
+<div class="sidtopp">
+  <div class="omslag">
+    <h1>Frågor &amp; svar</h1>
+    <p class="ingress">Det jag oftast får frågor om i ateljén.</p>
+  </div>
+</div>
+
+<div class="omslag sidkropp sidkropp--med-bild">
+  <div class="fragor">
+    {%- for post in page.fragor %}
+    <article class="fraga">
+      <h2>{{ post.fraga }}</h2>
+      <p>{{ post.svar | strip_newlines | strip }}</p>
+    </article>
+    {%- endfor %}
+  </div>
+  <div class="sidkropp__bild">
+    {% include bild.html id="fragor" alt="Fiolhals och snäcka i närbild" sizes="(min-width: 60rem) 26rem, 92vw" %}
+  </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for post in page.fragor %}
+    {
+      "@type": "Question",
+      "name": {{ post.fraga | jsonify }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ post.svar | strip_newlines | strip | jsonify }} }
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
+}
+</script>

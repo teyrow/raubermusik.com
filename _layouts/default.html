@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'sv' }}" class="ingen-js">
+<head>
+  <script>document.documentElement.classList.remove("ingen-js");</script>
+  {%- include head.html -%}
+</head>
+<body{% if page.body_klass %} class="{{ page.body_klass }}"{% endif %}>
+  {%- include header.html -%}
+  <main id="innehall">
+    {{ content }}
+  </main>
+  {%- include footer.html -%}
+  <script src="{{ '/assets/js/meny.js' | relative_url }}" defer></script>
+  {%- if page.url == "/kontakt/" %}
+  <script src="{{ '/assets/js/karta.js' | relative_url }}" defer></script>
+  {%- endif %}
+</body>
+</html>
