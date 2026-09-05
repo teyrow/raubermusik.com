@@ -69,5 +69,10 @@ det bara att värma träet och göra om.
 ## Fem fioler till Juja
 
 I augusti 2026 packade jag fem iordningställda fioler för resa till Pendo
-Amani youth center i Juja i Kenya. Instrument som står oanvända gör ingen
-nytta; kommer de i händerna på någon som vill lära sig spela gör de det.
+Amani youth center i Juja i Kenya. Genom
+[Åtvidabergs Kenyaförening](https://www.kenyaforeningen.se/) arbetar jag lite
+volontärt för att stötta deras verksamhet, något som känns jättebra.
+
+Föreningen har sedan 2008 arbetat för barns och ungdomars skolgång och
+utveckling i Juja utanför Nairobi, tillsammans med Pendo Amani som bland annat
+driver musik-, dans- och fotbollsprogram.
