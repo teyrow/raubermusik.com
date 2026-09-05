@@ -33,10 +33,11 @@ stannade.
 ## Verkstaden
 
 Musikskolornas instrument gick sönder, och närmaste reparatör fanns långt
-bort. 2005 startade jag egen firma för att laga dem. I dag är jag två dagar i
-veckan i verkstaden och resten av tiden på Kulturskolan. Musikskolor från
-flera grannkommuner lämnar in sina instrument, och på sommaren är det
-högsäsong – då ligger de i travar på både bänkar och golv.
+bort. 2005 startade jag egen firma för att laga dem. Under många år delade jag
+tiden mellan verkstaden och Kulturskolan, men sedan några år tillbaka är
+verkstaden heltid. Musikskolor från flera grannkommuner lämnar in sina
+instrument, och på sommaren är det högsäsong – då ligger de i travar på både
+bänkar och golv.
 
 Behöver man ett instrument som går att lita på så är det när man håller på
 att lära sig. Fiol är svårt nog ändå.
@@ -64,3 +65,9 @@ stråken ser rak ut – sedan pekar Ulf ut ställena där den inte är det. Då 
 det bara att värma träet och göra om.
 
 [Se stråkarna jag byggt]({{ '/strakbygge/' | relative_url }})
+
+## Fem fioler till Juja
+
+I augusti 2026 packade jag fem iordningställda fioler för resa till Pendo
+Amani youth center i Juja i Kenya. Instrument som står oanvända gör ingen
+nytta; kommer de i händerna på någon som vill lära sig spela gör de det.
