@@ -6,18 +6,33 @@
 
 /* --- Typsnitt ------------------------------------------------------------ */
 
+/* Sökvägarna är relativa. En absolut skulle ignorera site.baseurl och slå
+   fel när sajten ligger i en underkatalog.
+
+   Båda unicode-range måste stämma med TECKEN i tools/subset-font.sh.
+   Deklarerar vi ett intervall som saknas i filen får besökaren tomma rutor
+   i stället för bokstäver. */
+
+/* Rubriker. Filen är låst till vikt 500 – den enda vikt sajten använder. */
 @font-face {
   font-family: "Playfair Display";
-  /* Relativ sökväg – en absolut skulle ignorera site.baseurl och slå fel
-     när sajten ligger i en underkatalog. */
   src: url("../fonts/playfair-display-latin.woff2") format("woff2");
-  /* Filen är låst till vikt 500 av tools/subset-font.sh – det är den enda
-     vikt sajten använder. */
   font-weight: 500;
   font-style: normal;
   font-display: swap;
-  /* Måste stämma med TECKEN i tools/subset-font.sh. Deklarerar vi ett
-     intervall som saknas i filen får besökaren tomma rutor. */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2013-2014,
+                 U+2018-201A, U+201C-201E, U+2026, U+2122, U+2212;
+}
+
+/* Brödtext. Variabel inom 400–600: 400 för löptext, 600 för fetstil och
+   etiketter. Ritad för skärm, till skillnad från Playfair som är ett
+   rubriksnitt och blir tunt i småstil. */
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("../fonts/source-serif-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2013-2014,
                  U+2018-201A, U+201C-201E, U+2026, U+2122, U+2212;
 }
@@ -39,8 +54,10 @@
   --text-dampad: #6d635c;
   --linje: #e3d9d1;
 
-  --serif: "Playfair Display", Georgia, "Times New Roman", serif;
-  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Två snitt: ett rubriksnitt som ekar logotypens högkontrastserif, och ett
+     textsnitt ritat för att läsas i småstil. Sidan har ingen sans alls. */
+  --rubrik: "Playfair Display", Georgia, "Times New Roman", serif;
+  --brod: "Source Serif 4", Georgia, "Times New Roman", serif;
 
   --omslag: 68rem;
   --luft: clamp(3rem, 7vw, 5.5rem);
@@ -65,14 +82,14 @@ body {
   margin: 0;
   background: var(--botten);
   color: var(--text);
-  font-family: var(--sans);
-  font-size: 1.0625rem;
-  line-height: 1.65;
+  font-family: var(--brod);
+  font-size: 1.09rem;
+  line-height: 1.66;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
-  font-family: var(--serif);
+  font-family: var(--rubrik);
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.01em;
@@ -82,7 +99,7 @@ h1, h2, h3 {
 
 h1 { font-size: clamp(2.1rem, 5.5vw, 3.1rem); }
 h2 { font-size: clamp(1.55rem, 3.4vw, 2.1rem); }
-h3 { font-size: 1.2rem; font-family: var(--sans); font-weight: 600; letter-spacing: 0; }
+h3 { font-size: 1.2rem; font-family: var(--brod); font-weight: 600; letter-spacing: 0; }
 
 p { margin: 0 0 1.1em; }
 p:last-child { margin-bottom: 0; }
@@ -342,7 +359,7 @@ img { height: auto; display: block; }
 }
 .kort img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
 .kort__kropp { padding: 1.25rem 1.35rem 1.5rem; }
-.kort h3 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin-bottom: .35rem; color: var(--brun-mork); }
+.kort h3 { font-family: var(--rubrik); font-weight: 500; font-size: 1.3rem; margin-bottom: .35rem; color: var(--brun-mork); }
 .kort p { color: var(--text-dampad); font-size: .97rem; }
 
 /* --- Sidtopp och sidkropp (undersidor) ----------------------------------- */
@@ -393,7 +410,11 @@ img { height: auto; display: block; }
   border-bottom: 1px solid var(--linje);
 }
 .prislista li:first-child { border-top: 1px solid var(--linje); }
-.prislista span:last-child { color: var(--text-dampad); white-space: nowrap; }
+.prislista span:last-child {
+  color: var(--text-dampad);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
 
 /* --- Frågor och svar ----------------------------------------------------- */
 
@@ -406,7 +427,7 @@ img { height: auto; display: block; }
 .fraga:first-child { border-top: 1px solid var(--linje); }
 .fraga h2 {
   font-size: 1.2rem;
-  font-family: var(--sans);
+  font-family: var(--brod);
   font-weight: 600;
   letter-spacing: 0;
   color: var(--brun-mork);
@@ -451,11 +472,11 @@ img { height: auto; display: block; }
   border-radius: var(--radie);
   padding: 1.4rem 1.5rem;
 }
-.kontaktruta h2 { font-size: 1.05rem; font-family: var(--sans); font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--text-dampad); margin-bottom: .6em; }
+.kontaktruta h2 { font-size: 1.05rem; font-family: var(--brod); font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--text-dampad); margin-bottom: .6em; }
 .kontaktruta a { font-size: 1.1rem; }
 .kontaktruta address { font-style: normal; }
 
-.oppettider { margin: 0; }
+.oppettider { margin: 0; font-variant-numeric: tabular-nums; }
 .oppettider dt { font-weight: 600; }
 .oppettider dd { margin: 0 0 .6rem; color: var(--text-dampad); }
 .oppettider dd:last-child { margin-bottom: 0; }
@@ -515,7 +536,7 @@ img { height: auto; display: block; }
   padding-bottom: 2.5rem;
 }
 .sidfot__rubrik {
-  font-family: var(--sans);
+  font-family: var(--brod);
   font-size: .82rem;
   font-weight: 600;
   letter-spacing: .09em;

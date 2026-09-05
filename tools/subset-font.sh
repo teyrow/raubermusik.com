@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-# Skär ner rubriktypsnittet till de tecken sajten faktiskt använder och låser
-# det till en enda vikt. Originalet i _originals/fonts/ är den variabla
-# latin-uppsättningen från Google Fonts (vikt 400–700, ~38 kB); sajten använder
-# bara vikt 500, så variationstabellerna och alla oanvända tecken är dödvikt.
+# Skär ner sajtens två typsnitt till de tecken som faktiskt används och till
+# de vikter CSS:en efterfrågar. Originalen i _originals/fonts/ är de fulla
+# latin-uppsättningarna från Google Fonts.
 #
 #   ./tools/subset-font.sh
 #
@@ -17,9 +16,8 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-IN=_originals/fonts/playfair-display.woff2
-UT=assets/fonts/playfair-display-latin.woff2
-VIKT=500
+SRC=_originals/fonts
+UT=assets/fonts
 VENV=.venv-fonttools
 
 # Latin-1 (täcker svenska å ä ö é ü), samt de skiljetecken sajten använder.
@@ -35,18 +33,25 @@ fi
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
 
-echo "Låser vikten till $VIKT …"
-"$VENV/bin/fonttools" varLib.instancer "$IN" "wght=$VIKT" -o "$tmp/instans.ttf" >/dev/null
+# skar <infil> <utfil> <viktangivelse>
+# Viktangivelsen är antingen en enda vikt (500) eller ett intervall
+# (400:600) som behåller variationsaxeln inom det spannet.
+skar() {
+  local in=$SRC/$1 ut=$UT/$2 vikt=$3
+  "$VENV/bin/fonttools" varLib.instancer "$in" "wght=$vikt" -o "$tmp/$2.ttf" >/dev/null
+  "$VENV/bin/pyftsubset" "$tmp/$2.ttf" \
+    --unicodes="$TECKEN" \
+    --layout-features='kern,liga,clig,calt,tnum' \
+    --flavor=woff2 \
+    --desubroutinize \
+    --output-file="$ut"
+  printf '  %-34s %6d → %6d byte\n' "$2" "$(wc -c < "$in")" "$(wc -c < "$ut")"
+}
 
-echo "Skär bort oanvända tecken …"
-"$VENV/bin/pyftsubset" "$tmp/instans.ttf" \
-  --unicodes="$TECKEN" \
-  --layout-features='kern,liga,clig,calt' \
-  --flavor=woff2 \
-  --desubroutinize \
-  --output-file="$UT"
+echo "Skär ner typsnitten…"
+# Rubriker: enbart vikt 500.
+skar playfair-display.woff2  playfair-display-latin.woff2 500
+# Brödtext: 400 för löptext, 600 för fetstil och etiketter.
+skar source-serif-4.woff2    source-serif-latin.woff2     400:600
 
-fore=$(wc -c < "$IN")
-efter=$(wc -c < "$UT")
-printf 'Klart: %d → %d byte (%.0f %% mindre)\n' "$fore" "$efter" \
-  "$(echo "(1 - $efter/$fore) * 100" | bc -l)"
+printf 'Totalt: %d byte\n' "$(cat "$UT"/*.woff2 | wc -c)"
