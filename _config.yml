@@ -12,7 +12,9 @@ description: >-
 #   3. forhandsvisning: false
 #   4. echo raubermusik.com > CNAME
 # ---------------------------------------------------------------------------
-url: https://teyrow.github.io
+# teyrow.github.io skickar vidare till www.teyrow.com (din användarsajt),
+# så projektsajten ligger under den adressen.
+url: https://www.teyrow.com
 baseurl: /raubermusik.com
 
 # Håller förhandsvisningen borta ur sökmotorerna. Den riktiga sajten ligger

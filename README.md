@@ -80,7 +80,9 @@ på GitHub Pages tillåtna lista.
 ### Just nu: förhandsvisning på github.io
 
 I väntan på DNS-omställningen ligger sajten på
-<https://teyrow.github.io/raubermusik.com/>. Den är satt till `noindex` och
+<https://www.teyrow.com/raubermusik.com/>. (`teyrow.github.io` skickar vidare
+till din användarsajt `www.teyrow.com`, så projektsajten hamnar under den.)
+Den är satt till `noindex` och
 `Disallow: /` i robots.txt, eftersom den riktiga sajten fortfarande ligger kvar
 hos one.com och två kopior i sökindexet bara skadar.
 
