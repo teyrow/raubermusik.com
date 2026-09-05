@@ -61,7 +61,14 @@
 
   --omslag: 68rem;
   --luft: clamp(3rem, 7vw, 5.5rem);
-  --radie: 3px;
+
+  /* Hörnradierna är hämtade ur logotypen. F-hålet har inga avfasningar alls –
+     dess terminaler är hela cirklar och övergångarna långa svep. En 3-pixels
+     fasning är den motsatta gesten, en fräst kant. Därav en generös radie på
+     ytor, och helt runda knappar som ekar f-hålets ögon. */
+  --radie: 10px;
+  --radie-liten: 6px;
+  --radie-rund: 999px;
 }
 
 /* --- Grund --------------------------------------------------------------- */
@@ -117,7 +124,7 @@ img { height: auto; display: block; }
 :focus-visible {
   outline: 2px solid var(--brun);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: var(--radie-liten);
 }
 
 .omslag {
@@ -147,6 +154,7 @@ img { height: auto; display: block; }
   background: var(--brun);
   color: #fff;
   padding: .7rem 1.1rem;
+  border-radius: var(--radie-liten);
   z-index: 100;
 }
 .hoppa:focus { left: .5rem; top: .5rem; }
@@ -187,7 +195,7 @@ img { height: auto; display: block; }
   color: var(--text);
   font-size: .95rem;
   text-decoration: none;
-  border-radius: var(--radie);
+  border-radius: var(--radie-liten);
 }
 .meny a:hover { background: var(--botten-varm); color: var(--brun-mork); }
 
@@ -205,11 +213,11 @@ img { height: auto; display: block; }
     gap: .55rem;
     background: none;
     border: 1px solid var(--linje);
-    border-radius: var(--radie);
+    border-radius: var(--radie-rund);
     color: var(--text);
     font: inherit;
     font-size: .95rem;
-    padding: .5rem .8rem;
+    padding: .5rem .95rem;
     cursor: pointer;
   }
   .meny-knapp__streck,
@@ -511,8 +519,8 @@ img { height: auto; display: block; }
   background: var(--brun);
   color: #fff;
   border: 0;
-  border-radius: var(--radie);
-  padding: .7rem 1.3rem;
+  border-radius: var(--radie-rund);
+  padding: .7rem 1.5rem;
   font: inherit;
   font-weight: 600;
   text-decoration: none;
