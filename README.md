@@ -83,7 +83,7 @@ DNS-inställningar:
 | AAAA | `@` | `2606:50c0:8001::153` |
 | AAAA | `@` | `2606:50c0:8002::153` |
 | AAAA | `@` | `2606:50c0:8003::153` |
-| CNAME | `www` | `ANVÄNDARNAMN.github.io.` |
+| CNAME | `www` | `teyrow.github.io.` |
 
 **Viktigt:** webbhotellet kan sägas upp, men *domänregistreringen* måste leva
 vidare någonstans. Antingen behåller du domänen hos one.com (bara registrering
