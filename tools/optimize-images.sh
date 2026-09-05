@@ -18,10 +18,18 @@ WEBP_QUALITY=78
 
 command -v magick >/dev/null || { echo "Saknar ImageMagick (brew install imagemagick)" >&2; exit 1; }
 
-# render <infil> <utnamn> <bredd...>
+# render [--kvalitet JPG,WEBP] <infil> <utnamn> <bredd...>
+#
+# Detaljrika porträttbilder blir orimligt stora vid standardkvaliteten trots
+# att de bara visas några hundra pixlar breda. Sänk kvaliteten för dem med
+# --kvalitet i stället för att sänka den för alla.
 # Skriver samtidigt en rad per bild till _data/bilder.yml med bredder och
 # bildförhållande, så att mallen kan sätta width/height och slippa layouthopp.
 render() {
+  local jq=$JPG_QUALITY wq=$WEBP_QUALITY
+  if [ "${1:-}" = "--kvalitet" ]; then
+    jq=${2%%,*}; wq=${2##*,}; shift 2
+  fi
   local in=$1 name=$2; shift 2
   local ow oh made=()
   ow=$(magick identify -format '%w' "$in[0]")
@@ -36,9 +44,9 @@ render() {
       continue
     fi
     magick "$in" -auto-orient -strip -resize "${w}x" -interlace Plane \
-      -sampling-factor 4:2:0 -quality "$JPG_QUALITY" "$OUT/${name}-${w}.jpg"
+      -sampling-factor 4:2:0 -quality "$jq" "$OUT/${name}-${w}.jpg"
     magick "$in" -auto-orient -strip -resize "${w}x" \
-      -define webp:method=6 -quality "$WEBP_QUALITY" "$OUT/${name}-${w}.webp"
+      -define webp:method=6 -quality "$wq" "$OUT/${name}-${w}.webp"
     made+=("$w")
     echo "  ${name}-${w}  jpg $(du -h "$OUT/${name}-${w}.jpg" | cut -f1)  webp $(du -h "$OUT/${name}-${w}.webp" | cut -f1)"
   done
@@ -58,9 +66,9 @@ mkdir -p _data
 printf '# Genererad av tools/optimize-images.sh – redigera inte för hand.\n' > "$MANIFEST"
 render "$SRC/hero.jpg"         hero          1200 2000
 render "$SRC/atelje.jpg"       atelje         600 900 1200
-render "$SRC/reparationer.jpg" reparationer   600 900 1200
+render --kvalitet 72,64 "$SRC/reparationer.jpg" reparationer   600 900 1200
 render "$SRC/butiken.jpg"      butiken        600 900 1200
-render "$SRC/fragor.jpg"       fragor         600 900 1200
+render --kvalitet 72,64 "$SRC/fragor.jpg"       fragor         600 900 1200
 render "$SRC/kontakt.jpg"      kontakt        600 900 1200
 render "$SRC/strakbygge.jpg"   strakbygge     600 900 1200
 for i in 1 2 3 4 5 6; do

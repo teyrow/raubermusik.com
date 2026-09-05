@@ -11,10 +11,15 @@
   /* Relativ sökväg – en absolut skulle ignorera site.baseurl och slå fel
      när sajten ligger i en underkatalog. */
   src: url("../fonts/playfair-display-latin.woff2") format("woff2");
-  font-weight: 400 700;
+  /* Filen är låst till vikt 500 av tools/subset-font.sh – det är den enda
+     vikt sajten använder. */
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+2122, U+2212;
+  /* Måste stämma med TECKEN i tools/subset-font.sh. Deklarerar vi ett
+     intervall som saknas i filen får besökaren tomma rutor. */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2013-2014,
+                 U+2018-201A, U+201C-201E, U+2026, U+2122, U+2212;
 }
 
 /* --- Variabler ----------------------------------------------------------- */
@@ -104,6 +109,19 @@ img { height: auto; display: block; }
 }
 
 .obullad { list-style: none; margin: 0; padding: 0; }
+
+/* Läses av skärmläsare men syns inte. */
+.visuellt-dold {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
 
 .hoppa {
   position: absolute;
@@ -496,14 +514,14 @@ img { height: auto; display: block; }
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
   padding-bottom: 2.5rem;
 }
-.sidfot h2 {
+.sidfot__rubrik {
   font-family: var(--sans);
   font-size: .82rem;
   font-weight: 600;
   letter-spacing: .09em;
   text-transform: uppercase;
-  color: #8d817a;
-  margin-bottom: .9em;
+  color: #a1958d;
+  margin: 0 0 .9em;
 }
 .sidfot a { color: #f2ece8; }
 .sidfot a:hover { color: #fff; }
@@ -517,7 +535,7 @@ img { height: auto; display: block; }
   border-top: 1px solid #423b37;
   padding-block: 1.4rem;
   font-size: .87rem;
-  color: #8d817a;
+  color: #a1958d;
 }
 
 .kontakt__notis { margin-bottom: 3rem; }
@@ -635,4 +653,50 @@ img { height: auto; display: block; }
   }
   .bildvisare__pil--bak { translate: -3.25rem 0; }
   .bildvisare__pil--fram { translate: 3.25rem 0; }
+}
+
+
+/* --- Utskrift ------------------------------------------------------------
+   Någon som skriver ut kontaktsidan vill ha adressen, inte menyn. ------- */
+
+@media print {
+  .sidhuvud,
+  .hoppa,
+  .meny-knapp,
+  .karta,
+  .bildvisare,
+  .kort-rutnat,
+  .sektion--morker { display: none !important; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  .sidtopp,
+  .sektion--varm { background: none; border: 0; }
+
+  .sidfot {
+    background: none;
+    color: #000;
+    border-top: 1px solid #999;
+    padding-top: 1rem;
+  }
+  .sidfot a,
+  .sidfot__ingress,
+  .sidfot__rubrik,
+  .sidfot .oppettider dd,
+  .sidfot__botten { color: #000; }
+  .sidfot__logo { filter: invert(1); }
+
+  /* Skriv ut vart länkarna går – på papper syns ju ingen href. */
+  .prosa a[href^="http"]::after,
+  .sidkropp a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
+
+  .sidkropp--med-bild { display: block; }
+  .sidkropp__bild { display: none; }
+
+  h1, h2, h3 { break-after: avoid; }
+  .fraga { break-inside: avoid; }
 }

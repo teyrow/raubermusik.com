@@ -1,5 +1,6 @@
 {%- assign k = site.data.kontakt -%}
 <footer class="sidfot">
+  <h2 class="visuellt-dold">Kontaktuppgifter</h2>
   <div class="omslag sidfot__rutnat">
 
     <div class="sidfot__block">
@@ -8,7 +9,7 @@
     </div>
 
     <div class="sidfot__block">
-      <h2>Kontakt</h2>
+      <p class="sidfot__rubrik">Kontakt</p>
       <ul class="obullad">
         <li><a href="tel:{{ k.telefon_lank }}">{{ k.telefon }}</a></li>
         <li><a href="mailto:{{ k.epost }}">{{ k.epost }}</a></li>
@@ -17,7 +18,7 @@
     </div>
 
     <div class="sidfot__block">
-      <h2>Adress</h2>
+      <p class="sidfot__rubrik">Adress</p>
       <address>
         {{ k.namn }}<br>
         {{ k.gata }}<br>
@@ -27,7 +28,7 @@
     </div>
 
     <div class="sidfot__block">
-      <h2>Öppettider</h2>
+      <p class="sidfot__rubrik">Öppettider</p>
       <dl class="oppettider">
         {%- for rad in k.oppettider %}
         <dt>{{ rad.dagar }}</dt>
